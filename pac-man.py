@@ -125,7 +125,10 @@ def move():
             plan = choice(options)
             course.x = plan.x
             course.y = plan.y
-
+            if pacman.x > plan.x:
+                plan = vector(5,0)
+                course.x = plan.x
+                course.y = plan.y
         up()
         goto(point.x + 10, point.y + 10)
         dot(20, 'red')
