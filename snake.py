@@ -3,7 +3,9 @@ from random import randrange
 from freegames import square, vector  
 food = vector(0, 0) 
 snake = [vector(10, 0)] 
-aim = vector(0, -10)  
+aim = vector(0, -10)
+actual = randrange(0,4)
+siguiente = randrange(0,4) 
 def change(x, y):
     "Change snake direction."
     aim.x = x
@@ -12,7 +14,15 @@ def inside(head):
     "Return True if head inside boundaries."
     return -200 < head.x < 190 and -200 < head.y < 190  
 def move():
+    global actual
+    global siguiente
     "Move snake forward one segment."
+    color = ''
+    if actual == siguiente:
+       if actual == 4:
+          siguiente = 0
+       else:
+          siguiente = siguiente +1
     head = snake[-1].copy()
     head.move(aim)
     if not inside(head) or head in snake:
@@ -27,9 +37,29 @@ def move():
     else:
         snake.pop(0)
     clear()
+    if actual == 0:
+       color = 'black'
+    if actual == 1:
+       color = 'blue'
+    if actual == 2:
+       color = 'green'
+    if actual == 3:
+       color = 'yellow'
+    if actual == 4:
+       color = 'purple'
     for body in snake:
-        square(body.x, body.y, 9, 'black')
-    square(food.x, food.y, 9, 'green')
+        square(body.x, body.y, 9, color)
+    if siguiente == 0:
+       color = 'black'
+    if siguiente == 1:
+       color = 'blue'
+    if siguiente == 2:
+       color = 'green'
+    if siguiente == 3:
+       color = 'yellow'
+    if siguiente == 4:
+       color = 'purple'
+    square(food.x, food.y, 9, color)
     update()
     ontimer(move, 100)
 setup(420, 420, 370, 0)
