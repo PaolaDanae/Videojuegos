@@ -51,15 +51,31 @@ def circle(start, end):
     
 
 def rectangle(start, end):
-    """Draw rectangle from start to end."""
-    pass  # TODO
-
+    """Dibujar un triangulo de esquina a esquina. deben ser esquinas opuestas"""
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+    forward(end.x - start.x)
+    left(90)
+    forward(end.y - start.y)
+    left(90)
+    forward(end.x - start.x)
+    left(90)
+    forward(end.y - start.y)
+    end_fill()
 
 def triangle(start, end):
-    """Draw triangle from start to end."""
-    pass  # TODO
-
-
+    """Dibujar un triangulo con la primera esquina y la parte superior del triangulo."""
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+    forward(2*(end.x - start.x))
+    goto(end.x, end.y)
+    goto(start.x, start.y)
+    end_fill()
+  
 def tap(x, y):
     """Store starting point or draw shape."""
     start = state['start']
