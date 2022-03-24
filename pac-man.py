@@ -135,8 +135,8 @@ def move():
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
-
-    ontimer(move, 100)
+    """Se cuanto se mueve en cierto tiempo"""
+    ontimer(move, 50)
 
 def change(x, y):
     "Change pacman aim if valid."
