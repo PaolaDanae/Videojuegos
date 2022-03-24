@@ -19,6 +19,7 @@ tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
 taps = 0
+cont =0
 
 
 def square(x, y):
@@ -48,6 +49,7 @@ def tap(x, y):
     """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
+    global cont
     global taps
     taps+=1
     print('Taps',taps)
@@ -58,6 +60,9 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        cont = cont +1
+        if cont == 32:
+            print('Completado')
 
 
 def draw():
