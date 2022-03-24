@@ -1,11 +1,14 @@
-from turtle import * 
+from turtle import *
+import time
 from random import randrange
 from freegames import square, vector  
-food = vector(0, 0) 
+food = vector(0, 0)
 snake = [vector(10, 0)] 
 aim = vector(0, -10)
 actual = randrange(0,4)
-siguiente = randrange(0,4) 
+siguiente = randrange(0,4)
+numRandX = randrange(0,2)
+numRandY = randrange(0,2)
 def change(x, y):
     "Change snake direction."
     aim.x = x
@@ -16,6 +19,8 @@ def inside(head):
 def move():
     global actual
     global siguiente
+    global numRandX
+    global numRandY
     "Move snake forward one segment."
     color = ''
     if actual == siguiente:
@@ -30,12 +35,27 @@ def move():
         update()
         return
     snake.append(head)
+
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10  
-        food.y = randrange(-15, 15) * 10     
+        food.x = randrange(-15, 15) * 10
+        food.y = randrange(-15, 15) * 10
+        numRandX = randrange(0,2)
+        numRandY = randrange(0,2)
     else:
         snake.pop(0)
+
+        if food.x < 150 and food.x > -150:
+            if numRandX == 0:
+                food.x -=1
+            elif numRandX == 1:
+                food.x +=1
+            elif food.x > 150:
+                food.x -=1
+            elif food.x < -150:
+                food.x +=1
+            
+    
     clear()
     if actual == 0:
        color = 'black'
