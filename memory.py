@@ -53,7 +53,7 @@ def tap(x, y):
     global taps
     taps+=1
     print('Taps',taps)
-
+    # usamos el contador global para contar los taps
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
@@ -63,6 +63,7 @@ def tap(x, y):
         cont = cont +1
         if cont == 32:
             print('Completado')
+        #En caso de terminar de encontrar los pares imprimir completado
 
 
 def draw():
@@ -82,7 +83,8 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        style =('Arial', 30, 'normal') //centramos los numeros.
+        style =('Arial', 30, 'normal') 
+        #centramos los numeros.
         if tiles[mark] < 10:
             goto(x+20, y)
             color('black')
