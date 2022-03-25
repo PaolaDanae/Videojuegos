@@ -10,18 +10,18 @@ siguiente = randrange(0,4)
 numRandX = randrange(0,2)
 numRandY = randrange(0,2)
 def change(x, y):
-    "Change snake direction."
+    "Cambia la direccion de la vibora asignando nuevos valores en x y y al vector de posicion"
     aim.x = x
     aim.y = y  
 def inside(head):
-    "Return True if head inside boundaries."
+    "Regresa verdadero si la cabeza de la vibora se encuentra aun en los limites del mapa"
     return -200 < head.x < 190 and -200 < head.y < 190  
 def move():
+    "Mueve la serpiente adelante un segmento a la vez revisando que la serpiente se encuentre dentro de los limites del mapa"
     global actual
     global siguiente
     global numRandX
     global numRandY
-    "Move snake forward one segment."
     color = ''
     if actual == siguiente:
        if actual == 4:
@@ -37,6 +37,7 @@ def move():
     snake.append(head)
 
     if head == food:
+    "Cuando la serpiente alcance la comida, la comida comenzara a moverse hacia la izq o der de forma aleatoria"
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
@@ -57,6 +58,7 @@ def move():
             
     
     clear()
+    "Se genera un color aleatorio para la vibora y la fruta "
     if actual == 0:
        color = 'black'
     if actual == 1:
