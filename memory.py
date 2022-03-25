@@ -23,7 +23,7 @@ cont =0
 
 
 def square(x, y):
-    """Draw white square with black outline at (x, y)."""
+    """Dibuja cuadrados con marco negro."""
     up()
     goto(x, y)
     down()
@@ -36,12 +36,12 @@ def square(x, y):
 
 
 def index(x, y):
-    """Convert (x, y) coordinates to tiles index."""
+    """Convierte las cordenada x,y en index de los cuadrados."""
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
 
 
 def xy(count):
-    """Convert tiles count to (x, y) coordinates."""
+    """Convierte los cuadrados en coordenadas x y y."""
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
 
@@ -53,7 +53,7 @@ def tap(x, y):
     global taps
     taps+=1
     print('Taps',taps)
-
+    # usamos el contador global para contar los taps
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
@@ -63,10 +63,11 @@ def tap(x, y):
         cont = cont +1
         if cont == 32:
             print('Completado')
+        #En caso de terminar de encontrar los pares imprimir completado
 
 
 def draw():
-    """Draw image and tiles."""
+    """Dibuja la imagen."""
     clear()
     goto(0, 0)
     shape(car)
@@ -82,7 +83,8 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        style =('Arial', 30, 'normal')
+        style =('Arial', 30, 'normal') 
+        #centramos los numeros.
         if tiles[mark] < 10:
             goto(x+20, y)
             color('black')

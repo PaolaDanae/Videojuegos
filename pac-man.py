@@ -38,7 +38,7 @@ tiles = [
 ]
 
 def square(x, y):
-    "Draw square using path at (x, y)."
+    "dibuja cuadrados usando el camino."
     path.up()
     path.goto(x, y)
     path.down()
@@ -51,14 +51,14 @@ def square(x, y):
     path.end_fill()
 
 def offset(point):
-    "Return offset of point in tiles."
+    "regresa de que tipo son los cuadrados."
     x = (floor(point.x, 20) + 200) / 20
     y = (180 - floor(point.y, 20)) / 20
     index = int(x + y * 20)
     return index
 
 def valid(point):
-    "Return True if point is valid in tiles."
+    "Regresa verdadero si la posicion del punto es valido."
     index = offset(point)
 
     if tiles[index] == 0:
@@ -72,7 +72,7 @@ def valid(point):
     return point.x % 20 == 0 or point.y % 20 == 0
 
 def world():
-    "Draw world using path."
+    "Usando el path crea el punto ."
     bgcolor('black')
     path.color('blue')
 
@@ -90,7 +90,7 @@ def world():
                 path.dot(2, 'white')
 
 def move():
-    "Move pacman and all ghosts."
+    "Mueve a pac_man y a los fantasmas, con velocidad e inteligencia."
     writer.undo()
     writer.write(state['score'])
 
@@ -126,6 +126,7 @@ def move():
             course.x = plan.x
             course.y = plan.y
             if pacman.x > plan.x:
+#Se mejora la inteligencia de los fantasmas
                 plan = vector(5,0)
                 course.x = plan.x
                 course.y = plan.y
@@ -138,11 +139,11 @@ def move():
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
-    """Se cuanto se mueve en cierto tiempo"""
+    """cuanto se mueve en cierto tiempo"""
     ontimer(move, 50)
 
 def change(x, y):
-    "Change pacman aim if valid."
+    "Cambia la direccion si se puede."
     if valid(pacman + vector(x, y)):
         aim.x = x
         aim.y = y

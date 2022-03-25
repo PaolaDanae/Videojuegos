@@ -16,7 +16,7 @@ from freegames import vector
 
 
 def line(start, end):
-    """Draw line from start to end."""
+    """Ubica un punto inicial y uno final para hacer una linea entre ambos puntos."""
     up()
     goto(start.x, start.y)
     down()
@@ -24,7 +24,7 @@ def line(start, end):
 
 
 def square(start, end):
-    """Draw square from start to end."""
+    """Crea un cuadrado con la distancia del punto inicial al final."""
     up()
     goto(start.x, start.y)
     down()
@@ -38,7 +38,7 @@ def square(start, end):
 
 
 def circle(start, end):
-    """Draw circle from start to end."""
+    """dibuja un circulo con un radio que vale la distancia entre el punto inicial y el final."""
     up()
     goto(start.x,start.y)
     down()
@@ -51,7 +51,7 @@ def circle(start, end):
     
 
 def rectangle(start, end):
-    """Dibujar un triangulo de esquina a esquina. deben ser esquinas opuestas"""
+    """Dibujar un rectangulo de esquina a esquina. deben ser esquinas opuestas"""
     up()
     goto(start.x, start.y)
     down()
@@ -77,7 +77,7 @@ def triangle(start, end):
     end_fill()
   
 def tap(x, y):
-    """Store starting point or draw shape."""
+    """Obtiene la posicion inicial o la figura."""
     start = state['start']
 
     if start is None:
