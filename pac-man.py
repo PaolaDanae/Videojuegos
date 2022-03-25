@@ -125,7 +125,8 @@ def move():
             plan = choice(options)
             course.x = plan.x
             course.y = plan.y
-            if pacman.x > plan.x://Se mejora la inteligencia de los fantasmas
+            if pacman.x > plan.x:
+#Se mejora la inteligencia de los fantasmas
                 plan = vector(5,0)
                 course.x = plan.x
                 course.y = plan.y
